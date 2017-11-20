@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,13 +32,14 @@ public class MainActivity extends AppCompatActivity {
         public void onOpen(WebSocket webSocket, Response response) {
             webSocket.send("Hello, it's SSaurel !");
             webSocket.send("What's up ?");
-            webSocket.send(ByteString.decodeHex("deadbeef"));
-            webSocket.close(NORMAL_CLOSURE_STATUS, "Goodbye !");
+//            webSocket.send(ByteString.decodeHex("deadbeef"));
+//            webSocket.close(NORMAL_CLOSURE_STATUS, "Goodbye !");
         }
 
         @Override
         public void onMessage(WebSocket webSocket, String text) {
             output("Receiving : " + text);
+            Log.d("Debug", "onMessage: "+text);
         }
 
         @Override
